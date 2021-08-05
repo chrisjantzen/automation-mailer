@@ -1,0 +1,6 @@
+.git*
+.vscode
+local.settings.json
+test
+local.settings.json.template
+OrgList.csv.template

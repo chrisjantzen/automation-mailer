@@ -1,0 +1,16 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION": "~7",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+
+    "SENDGRID_API_URL": "https://api.sendgrid.com/v3/mail/send",
+    "SENDGRID_API_KEY": "",
+
+    "VALID_EMAILS": "automation@sts.com, user.audit@sts.com",
+    
+    "APIKey_Global": "",
+    "APIKey_COMPANY":  ""
+  }
+}
