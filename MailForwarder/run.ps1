@@ -69,7 +69,7 @@ if (!$Request.Body.Subject -or $Request.Body.Subject -isnot [System.String]) {
 }
 $EmailSubject = $Request.Body.Subject
 
-if ((!$Request.Body.TextContent -or $Request.Body.TextContent -isnot [System.String]) -and !$Request.Body.HTMLContent -or $Request.Body.HTMLContent -isnot [System.String]) {
+if (!(($Request.Body.TextContent -and $Request.Body.TextContent -is [System.String]) -or ($Request.Body.HTMLContent -and $Request.Body.HTMLContent -is [System.String]))) {
     ImmediateFailure "400 - A valid email body is required in the TextContent or HTMLContent body parameter"
 }
 $TextContent = $HTMLContent = ""
