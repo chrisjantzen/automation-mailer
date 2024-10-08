@@ -11,14 +11,14 @@ Push all of this to an Azure function and then you will be able to use the Autom
 
 Note that you can only send from a set of whitelisted emails. These can be found in `run.ps1`. 
 
-To send an email you must send the following info in the request body in JSON:
+To send an email you must send the following info in the request body in JSON (case-sensitive):
 - `From` - An array of emails, each with the format:
   - `Email` - The email to send this from
   - `Name` - An optional From name
 - `Subject` - The email subject
 - `TextContent` or `HTMLContent` - The content of the email. If using TextContent it will not be encoded as HTML.
 
-The following request body fields can also be used but are optional:
+The following request body fields can also be used but are optional (case-sensitive):
 - `To` - An array of emails, each with the format:
   - `Email` - The email to send to
   - `Name` - An optional To name
