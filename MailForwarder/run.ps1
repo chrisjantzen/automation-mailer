@@ -26,11 +26,14 @@ $clientToken = $request.headers.'x-api-key'
 
 $ApiKeys = (Get-ChildItem env:APIKey_*)
 $ApiKey = $ApiKeys | Where-Object { $_.Value -eq $clientToken }
+Write-Information ("API Key: {0}" -f $request.headers.'x-api-key')
 
 # Check if the client's API token matches our stored version and that it's not too short.
 # Without this check, a misconfigured environmental variable could allow unauthenticated access.
 if (!$ApiKey -or $ApiKey.Value.Length -lt 14 -or $clientToken -ne $ApiKey.Value) {
-    ImmediateFailure "401 - API token does not match"
+    $ClientIP = ($request.headers.'X-Forwarded-For' -split ':')[0]
+    Write-Information ("Client IP: {0}" -f $ClientIP)
+    ImmediateFailure "401 - API token does not match Company: $($ApiKey)"
 }
 
 # Verify against the Organization IP whitelist  (OrgList.csv)
